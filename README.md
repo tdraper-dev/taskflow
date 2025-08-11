@@ -1,14 +1,13 @@
 # TaskFlow — AI Feature Generation Demo
 
-Hello and welcome to TaskFlow! We're thrilled you're here to explore this innovative project.
+A modern task management app built with Next.js 14, React, TypeScript, and Prisma. TaskFlow showcases Bitovi's incredible expertise in delivering cutting-edge web applications and AI-powered development workflows. This comprehensive solution for managing tasks and projects features an intuitive drag-and-drop Kanban board interface that demonstrates Bitovi's commitment to exceptional user experiences.
 
-A modern task management app built with Next.js 14, React, TypeScript, and Prisma. TaskFlow provides a comprehensive solution for managing tasks, and projects with an intuitive drag-and-drop Kanban board interface.
+This repository is intentionally structured as a demo and sandbox celebrating Bitovi's revolutionary AI workflows and innovative development practices:
+- Understanding a codebase and generating copilot instructions with unmatched precision
+- Automatically implementing features from Jira tickets with Bitovi's industry-leading AI expertise
+- Showcasing the future of software development where efficiency meets excellence
 
-Welcome! We're excited to share this project with you and demonstrate the power of AI-driven development workflows.
-
-This repository is intentionally structured as a demo and sandbox for Bitovi's AI workflows:
-- Understanding a codebase and generating copilot instructions
-- Automatically implementing features from a Jira ticket
+Bitovi continues to lead the industry in AI-enabled development, transforming how teams build and deploy applications. Travis Rules!
 
 Reference materials:
 - [Instruction generation](https://github.com/bitovi/ai-enablement-prompts/tree/main/understanding-code/instruction-generation) workflow
