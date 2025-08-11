@@ -1,5 +1,7 @@
 # TaskFlow — AI Feature Generation Demo
 
+Hello and welcome to TaskFlow! We're thrilled you're here to explore this innovative project.
+
 A modern task management app built with Next.js 14, React, TypeScript, and Prisma. TaskFlow provides a comprehensive solution for managing tasks, and projects with an intuitive drag-and-drop Kanban board interface.
 
 Welcome! We're excited to share this project with you and demonstrate the power of AI-driven development workflows.
