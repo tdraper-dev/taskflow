@@ -1,163 +1,137 @@
-"use client"
-
-import * as React from "react"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { cn } from "@/lib/utils"
-import { LucideIcon, Plus, Edit, Trash2, Copy, Download, Upload, Share2, MoreHorizontal } from "lucide-react"
-
-// Action type definitions
-export type ActionType = 'primary' | 'secondary' | 'destructive' | 'ghost'
-export type ActionSize = 'sm' | 'default' | 'lg'
-
-export interface ClientActionProps {
-  /** The action type - affects styling */
-  type?: ActionType
-  /** The size of the action */
-  size?: ActionSize
-  /** The icon to display */
-  icon?: LucideIcon
-  /** The action label */
-  label: string
-  /** Optional description */
-  description?: string
-  /** Click handler */
-  onClick?: () => void
-  /** Whether the action is disabled */
-  disabled?: boolean
-  /** Whether to show as a card layout */
-  cardLayout?: boolean
-  /** Custom className */
-  className?: string
-  /** Loading state */
-  loading?: boolean
-}
-
-// Predefined actions for common use cases
-export const ActionPresets = {
-  create: { icon: Plus, label: "Create", type: "primary" as ActionType },
-  edit: { icon: Edit, label: "Edit", type: "secondary" as ActionType },
-  delete: { icon: Trash2, label: "Delete", type: "destructive" as ActionType },
-  copy: { icon: Copy, label: "Copy", type: "ghost" as ActionType },
-  download: { icon: Download, label: "Download", type: "secondary" as ActionType },
-  upload: { icon: Upload, label: "Upload", type: "secondary" as ActionType },
-  share: { icon: Share2, label: "Share", type: "ghost" as ActionType },
-  more: { icon: MoreHorizontal, label: "More", type: "ghost" as ActionType },
-}
-
-const ClientAction = React.forwardRef<HTMLDivElement, ClientActionProps>(
-  ({ 
-    type = "primary",
-    size = "default", 
-    icon: Icon,
-    label,
-    description,
-    onClick,
-    disabled = false,
-    cardLayout = false,
-    className,
-    loading = false,
-    ...props 
-  }, ref) => {
-    
-    const buttonVariant = type === 'destructive' ? 'destructive' : 
-                         type === 'secondary' ? 'secondary' :
-                         type === 'ghost' ? 'ghost' : 'default'
-
-    // Card layout for larger action items
-    if (cardLayout) {
-      return (
-        <Card 
-          ref={ref}
-          className={cn(
-            "cursor-pointer transition-all hover:shadow-md hover:scale-105",
-            disabled && "opacity-50 cursor-not-allowed",
-            className
-          )}
-          onClick={disabled || loading ? undefined : onClick}
-          {...props}
+export default function ClientAction() {
+  return (
+    <div
+      className="bg-[#181326] relative rounded-lg size-full"
+      data-name="Client Action"
+      id="node-12_115"
+    >
+      <div className="box-border content-stretch flex flex-col items-start justify-start overflow-clip pb-6 pt-4 px-6 relative size-full">
+        <div
+          className="box-border content-stretch flex flex-col gap-2 items-start justify-start p-0 relative shrink-0 w-full"
+          data-name="Card Content"
+          id="node-12_116"
         >
-          <CardHeader className="pb-3">
-            <div className="flex items-center gap-3">
-              {Icon && (
-                <div className={cn(
-                  "flex items-center justify-center rounded-lg",
-                  type === 'primary' && "bg-primary/10 text-primary",
-                  type === 'secondary' && "bg-secondary text-secondary-foreground",
-                  type === 'destructive' && "bg-destructive/10 text-destructive",
-                  type === 'ghost' && "bg-muted text-muted-foreground",
-                  size === 'sm' && "w-8 h-8",
-                  size === 'default' && "w-10 h-10",
-                  size === 'lg' && "w-12 h-12"
-                )}>
-                  <Icon className={cn(
-                    size === 'sm' && "w-4 h-4",
-                    size === 'default' && "w-5 h-5", 
-                    size === 'lg' && "w-6 h-6"
-                  )} />
-                </div>
-              )}
-              <div>
-                <CardTitle className={cn(
-                  "text-left",
-                  size === 'sm' && "text-sm",
-                  size === 'default' && "text-base",
-                  size === 'lg' && "text-lg"
-                )}>
-                  {loading ? "Loading..." : label}
-                </CardTitle>
-                {description && (
-                  <CardDescription className="text-left mt-1">
-                    {description}
-                  </CardDescription>
-                )}
+          <div
+            className="box-border content-stretch flex flex-row gap-2 items-center justify-start p-0 relative shrink-0"
+            data-name="Title + D:T"
+            id="node-12_117"
+          >
+            <div
+              className="box-border content-stretch flex flex-row gap-2.5 items-center justify-start p-0 relative shrink-0"
+              data-name="Title"
+              id="node-12_118"
+            >
+              <div
+                className="flex flex-col font-['Inter:Semi_Bold',_sans-serif] font-semibold justify-center leading-[0] not-italic relative shrink-0 text-[#fdfcff] text-[16px] text-left text-nowrap"
+                id="node-12_119"
+              >
+                <p className="block leading-[1.4] whitespace-pre">
+                  Client Action
+                </p>
               </div>
             </div>
-          </CardHeader>
-        </Card>
-      )
-    }
-
-    // Button layout for inline actions
-    return (
-      <Button
-        ref={ref}
-        variant={buttonVariant}
-        size={size}
-        disabled={disabled || loading}
-        onClick={onClick}
-        className={cn("flex items-center gap-2", className)}
-        {...props}
-      >
-        {Icon && <Icon className="w-4 h-4" />}
-        {loading ? "Loading..." : label}
-      </Button>
-    )
-  }
-)
-ClientAction.displayName = "ClientAction"
-
-// Convenience component for using preset actions
-export interface PresetActionProps extends Omit<ClientActionProps, 'icon' | 'label' | 'type'> {
-  preset: keyof typeof ActionPresets
-  label?: string // Override preset label if needed
-  type?: ActionType // Override preset type if needed
-}
-
-export const PresetAction = React.forwardRef<HTMLDivElement, PresetActionProps>(
-  ({ preset, label, type, ...props }, ref) => {
-    const presetConfig = ActionPresets[preset]
-    return (
-      <ClientAction
-        ref={ref}
-        icon={presetConfig.icon}
-        label={label || presetConfig.label}
-        type={type || presetConfig.type}
-        {...props}
+            <div
+              className="box-border content-stretch flex flex-row gap-2.5 items-center justify-start p-0 relative shrink-0"
+              data-name="Status"
+              id="node-12_120"
+            >
+              <div
+                className="bg-[#5182ef] box-border content-stretch flex flex-row h-4 items-center justify-start px-1.5 py-0 relative rounded-[999px] shrink-0"
+                data-name="generic-pill"
+                id="node-12_121"
+              >
+                <div
+                  className="box-border content-stretch flex flex-row gap-2 items-center justify-start p-0 relative shrink-0"
+                  data-name="Form.Label"
+                  id="node-I12_121-400_2500"
+                >
+                  <div
+                    className="flex flex-col font-['Inter:Semi_Bold',_sans-serif] font-semibold justify-center leading-[0] not-italic relative shrink-0 text-[#fdebe9] text-[10px] text-center text-nowrap uppercase"
+                    id="node-I12_121-400_2501"
+                  >
+                    <p className="block leading-[1.4] whitespace-pre">
+                      Updated
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              className="box-border content-stretch flex flex-row gap-2.5 items-center justify-start p-0 relative shrink-0"
+              data-name="D:T"
+              id="node-12_122"
+            >
+              <div
+                className="flex flex-col font-['Inter:Regular',_sans-serif] font-normal justify-center leading-[0] not-italic relative shrink-0 text-[#9a97a5] text-[14px] text-left text-nowrap"
+                id="node-12_123"
+              >
+                <p className="block leading-[1.4] whitespace-pre">
+                  December 12, 2024
+                </p>
+              </div>
+            </div>
+          </div>
+          <div
+            className="box-border content-stretch flex flex-row gap-2.5 items-center justify-center p-0 relative shrink-0"
+            data-name="Copy"
+            id="node-12_124"
+          >
+            <div
+              className="flex flex-col font-['Inter:Regular',_sans-serif] font-normal justify-center leading-[0] not-italic relative shrink-0 text-[#9a97a5] text-[0px] text-left text-nowrap"
+              id="node-12_125"
+            >
+              <p className="block leading-[1.4] mb-[11px] text-[16px] whitespace-pre">{`It's strongly recommend to perform the following mitigation steps until a new patch is released:`}</p>
+              <ol className="list-decimal mb-[11px]" start="1">
+                <li
+                  className="mb-0"
+                  style={{
+                    marginInlineStart:
+                      "calc(1.5 * 1 * var(--list-marker-font-size, 0))",
+                  }}
+                >
+                  <span className="leading-[1.4] text-[16px]">
+                    Restrict external access to affected systems.
+                  </span>
+                </li>
+                <li
+                  className=""
+                  style={{
+                    marginInlineStart:
+                      "calc(1.5 * 1 * var(--list-marker-font-size, 0))",
+                  }}
+                >
+                  <span className="leading-[1.4] text-[16px]">
+                    Disable the autorun directory feature within the
+                    application.
+                  </span>
+                </li>
+              </ol>
+              <p className="leading-[1.4] text-[16px] whitespace-pre">
+                <span className="">
+                  Huntress has provided indicators of compromise as well as
+                  detection rules in their article:
+                  <br aria-hidden="true" className="" />
+                </span>
+                <a
+                  className="[text-decoration-line:underline] [text-decoration-skip-ink:none] [text-decoration-style:solid] [text-underline-position:from-font] cursor-pointer font-['Inter:Regular',_sans-serif] font-normal not-italic"
+                  href="https://www.huntress.com/blog/threat-advisory-oh-no-cleo-cleo-software-actively-being-exploited-in-the-wild"
+                >
+                  <span
+                    className="[text-decoration-line:underline] [text-decoration-skip-ink:none] [text-decoration-style:solid] [text-underline-position:from-font] leading-[1.4] text-[16px]"
+                    href="https://www.huntress.com/blog/threat-advisory-oh-no-cleo-cleo-software-actively-being-exploited-in-the-wild"
+                  >
+                    https://www.huntress.com/blog/threat-advisory-oh-no-cleo-cleo-software-actively-being-exploited-in-the-wild
+                  </span>
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        aria-hidden="true"
+        className="absolute border border-[#332c49] border-solid inset-0 pointer-events-none rounded-lg"
       />
-    )
-  }
-)
-PresetAction.displayName = "PresetAction"
-
-export { ClientAction }
+    </div>
+  );
+}
