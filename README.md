@@ -1,140 +1,94 @@
-# TaskFlow — AI Feature Generation Demo
+# Spaghetti Bolognese Recipe
 
-A modern task management app built with Next.js 14, React, TypeScript, and Prisma. TaskFlow provides a comprehensive solution for managing tasks, and projects with an intuitive drag-and-drop Kanban board interface.
+A classic Italian pasta dish featuring a rich, hearty meat sauce that's perfect for family dinners.
 
-This repository is intentionally structured as a demo and sandbox for Bitovi's AI workflows:
-- Understanding a codebase and generating copilot instructions
-- Automatically implementing features from a Jira ticket
+## Ingredients
 
-Reference materials:
-- [Instruction generation](https://github.com/bitovi/ai-enablement-prompts/tree/main/understanding-code/instruction-generation) workflow
-- [Feature generation](https://github.com/bitovi/ai-enablement-prompts/tree/main/writing-code/generate-feature) workflow
-- Example [Jira ticket](https://bitovi-training.atlassian.net/browse/USER-13) used in this repo
-- [Figma Designs](https://www.figma.com/design/TvHxpQ3z4Zq5JWOVUkgLlU/Tasks-Search-and-Filter?m=auto&t=q9FiK621lvm8IGt9-1)
+### For the Sauce:
+- 2 tablespoons olive oil
+- 1 large onion, finely chopped
+- 2 carrots, finely diced
+- 2 celery stalks, finely diced
+- 4 cloves garlic, minced
+- 1 lb (450g) ground beef (80/20 mix)
+- 1/2 lb (225g) ground pork
+- 1/2 cup red wine
+- 1 can (28 oz) crushed tomatoes
+- 2 tablespoons tomato paste
+- 1 cup whole milk
+- 1/2 cup beef stock
+- 2 bay leaves
+- 1 teaspoon dried oregano
+- 1/2 teaspoon dried thyme
+- Salt and freshly ground black pepper to taste
+- 1/4 cup fresh basil, chopped
+- 2 tablespoons fresh parsley, chopped
 
-## What you’ll do in this demo
+### For the Pasta:
+- 1 lb (450g) spaghetti
+- Salt for pasta water
+- Freshly grated Parmigiano-Reggiano cheese for serving
 
-- Run the app locally with seeded sample data
-- Explore the baseline experience on the `main` branch
-- Review the AI-completed feature for USER-13 on the `user-13-search-and-filter` branch
-- Compare branches and see exactly what the AI changed
-- Optionally, follow the Bitovi workflows to reproduce the feature implementation with your own AI agent
+## Instructions
 
-## Tech overview
+### Preparing the Sauce:
 
-- Next.js 14 App Router, React, TypeScript
-- Prisma ORM with SQLite for local development
-- shadcn/ui + Radix + Tailwind for UI
-- Feature-based structure with server actions and typed components
+1. **Heat the oil**: In a large, heavy-bottomed pot or Dutch oven, heat olive oil over medium heat.
 
-## Installation
+2. **Cook the vegetables**: Add onion, carrots, and celery. Cook for 8-10 minutes until vegetables are softened and lightly golden. Add garlic and cook for another minute.
 
-1. Clone the repository
-   ```bash
-   git clone https://github.com/mikedane-bitovi/taskflow
-   cd taskflow
-   npm install
-   ```
+3. **Brown the meat**: Increase heat to medium-high. Add ground beef and pork, breaking it up with a wooden spoon. Cook for 8-10 minutes until meat is browned and no longer pink.
 
-2. Set up the database
-   ```bash
-   # Create and migrate the database
-   npx prisma db push
-   npm run db:seed
-   ```
-   This will create sample users and tasks for testing. Default login credentials:
-   - Email: `alice@example.com`
-   - Password: `password123`
+4. **Add wine**: Pour in red wine and let it cook for 2-3 minutes until alcohol evaporates.
 
-3. Start the development server
-   ```bash
-   npm run dev
-   ```
-   Then open http://localhost:3000
+5. **Add tomatoes and seasonings**: Stir in crushed tomatoes, tomato paste, bay leaves, oregano, and thyme. Season with salt and pepper.
 
-## Branches used in this demo
+6. **Simmer**: Reduce heat to low and let the sauce simmer uncovered for 1.5-2 hours, stirring occasionally. The sauce should reduce and thicken.
 
-- main
-  - Baseline application used as the starting point for AI feature work
-  - Visit /tasks to see the tasks page before the feature is implemented
+7. **Add milk**: In the last 30 minutes of cooking, stir in the milk and beef stock. This adds richness and helps tenderize the meat.
 
-- user-13-search-and-filter
-  - Contains the implementation of Jira ticket USER-13
-  - Adds a searchable task bar and filter controls to the /tasks page
-  - Follows the project’s patterns (server actions, Prisma, shadcn/ui, accessibility)
+8. **Final seasoning**: Remove bay leaves and stir in fresh basil and parsley. Adjust seasoning with salt and pepper.
 
-Common Git operations for exploring the demo:
-```bash
-# Fetch all branches
-git fetch --all
+### Cooking the Pasta:
 
-# Switch between the baseline and AI-implemented feature
-git switch main
-git switch user-13-search-and-filter
+1. **Boil water**: Bring a large pot of salted water to a rolling boil.
 
-# See what changed between branches
-git diff main...user-13-search-and-filter
-```
+2. **Cook spaghetti**: Add spaghetti and cook according to package directions until al dente (usually 8-10 minutes).
 
-## The AI-implemented feature (USER-13)
+3. **Reserve pasta water**: Before draining, reserve 1 cup of pasta cooking water.
 
-Ticket: https://bitovi-training.atlassian.net/browse/USER-13
+4. **Drain**: Drain the pasta but don't rinse it.
 
-Feature summary:
-- Adds a searchable input and filters on the /tasks page
-- Lets users quickly find tasks by text, priority, and status
+### Serving:
 
-How to try it:
-1. Start the app (see Installation above)
-2. Log in with the seeded account or create your own 
-   - (alice@example.com / password123)
-3. On `main`, navigate to /tasks and note the baseline behavior
-4. Switch to `user-13-search-and-filter` and refresh /tasks
-5. Try searching by task title/description and filtering by priority/status
+1. **Combine**: Add the hot pasta to the sauce and toss to combine. Add a splash of pasta water if needed to help the sauce coat the pasta.
 
-## Tutorial: Running the AI workflows yourself
+2. **Serve**: Serve immediately with freshly grated Parmigiano-Reggiano cheese and additional fresh basil if desired.
 
-If you want to recreate the experience with your own AI agent, follow the Bitovi guides:
+## Tips for Perfect Bolognese
 
-1) Instruction generation
-- Goal: produce a codebase-specific instruction file the AI will follow when writing code
-- Guide: https://github.com/bitovi/ai-enablement-prompts/tree/main/understanding-code/instruction-generation
+- **Low and slow**: The key to great Bolognese is long, slow cooking. Don't rush this process.
+- **Meat mixture**: Using both beef and pork adds depth of flavor and richness.
+- **Wine selection**: Use a good quality red wine that you'd drink. The alcohol cooks off, leaving behind the flavor.
+- **Milk magic**: Adding milk might seem unusual, but it's traditional and helps create a silky, rich sauce.
+- **Make ahead**: Bolognese actually tastes better the next day. Make it ahead and reheat gently.
+- **Freezer friendly**: This sauce freezes well for up to 3 months.
 
-2) Feature generation
-- Goal: point your AI at a Jira ticket (e.g., USER-13) and have it implement the feature
-- Guide: https://github.com/bitovi/ai-enablement-prompts/tree/main/writing-code/generate-feature
+## Variations
 
-Suggested flow:
-- Start on `main`
-- Provide your agent with the instruction generation prompt to build a coding conventions file
-- Provide your agent with the feature generation prompt and the USER-13 ticket
-- Let the agent create a feature branch and implement the change
-- Compare your branch to `user-13-search-and-filter` to see how close you match
+- **Turkey Bolognese**: Substitute ground turkey for a lighter version
+- **Vegetarian**: Replace meat with finely chopped mushrooms, lentils, or plant-based ground meat
+- **Spicy**: Add a pinch of red pepper flakes with the garlic
 
-## Database management
+## Wine Pairing
 
-Available scripts:
-- `npm run db:seed` — Populate the database with sample data
-- `npm run db:clear` — Clear all data from the database
-- `npm run db:reset` — Clear and re-seed the database
+Serve with a medium-bodied red wine such as Chianti, Sangiovese, or Barbera d'Alba.
 
-The seed script creates:
-- 7 sample users with different roles and profiles
-- 30+ sample tasks with various priorities, statuses, and assignments
-- Realistic task data including descriptions, due dates, and assignments
+---
 
-Local development database:
-- Uses SQLite via Prisma (see `prisma/schema.prisma`)
-- Seeded data is safe to reset at any time using the scripts above
+*Buon appetito!* 🍝
 
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Follow the established code patterns
-4. Test your changes thoroughly
-5. Submit a pull request
-
-## License
-
-This project is licensed under the MIT License.
+**Prep Time:** 20 minutes  
+**Cook Time:** 2 hours  
+**Total Time:** 2 hours 20 minutes  
+**Serves:** 4-6 people
