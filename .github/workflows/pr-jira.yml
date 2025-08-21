@@ -45,7 +45,7 @@ jobs:
             echo "jira_ticket=" >> $GITHUB_OUTPUT
           fi
 
-      - name: Lookup Jira ticket
+      - name: Update Jira Ticket Status
         if: steps.extract-ticket.outputs.jira_ticket != ''
         env:
           JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
@@ -66,7 +66,7 @@ jobs:
             -u "$JIRA_EMAIL:$JIRA_API_TOKEN" \
             -H "Content-type: application/json" \
             -H "X-Automation-Webhook-Token: ${{ secrets.JIRA_WEBHOOK_TOKEN}}" \
-            --data '{"issues":["$jira_ticket"], "data": {"releaseVersion": "5.3.2"}}' \
+            --data '{"issues":["${jira_ticket}"], "data": {"releaseVersion": "5.3.2"}}' \
             "https://api-private.atlassian.com/automation/webhooks/jira/a/${{ secrets.JIRA_PRIVATE_ENDPOINT_ID}}")
 
           # Extract HTTP status code
@@ -87,26 +87,6 @@ jobs:
             echo "Response: $response_body"
             exit 1
           fi
-
-      - name: Comment on PR with Jira info
-        if: success() && steps.extract-ticket.outputs.jira_ticket != ''
-        uses: actions/github-script@v7
-        with:
-          script: |
-            const jiraTicket = '${{ steps.extract-ticket.outputs.jira_ticket }}';
-            const jiraBaseUrl = '${{ secrets.JIRA_BASE_URL }}';
-
-            const comment = `🎫 **Jira Ticket Found:** [${jiraTicket}](${jiraBaseUrl}/browse/${jiraTicket})
-
-            ✅ Lint check passed
-            ✅ Jira ticket lookup successful`;
-
-            github.rest.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: comment
-            });
 
       - name: Comment on PR if no Jira ticket found
         if: success() && steps.extract-ticket.outputs.jira_ticket == ''
