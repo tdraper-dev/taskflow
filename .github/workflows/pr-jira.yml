@@ -66,7 +66,7 @@ jobs:
             -u "$JIRA_EMAIL:$JIRA_API_TOKEN" \
             -H "Content-type: application/json" \
             -H "X-Automation-Webhook-Token: ${{ secrets.JIRA_WEBHOOK_TOKEN}}" \
-            --data '{"issues":[${jira_ticket}], "data": {"releaseVersion": "5.3.2"}}' \
+            --data "{\"issues\":[\"${jira_ticket}\"], \"data\": {\"releaseVersion\": \"5.3.2\"}}" \
             "https://api-private.atlassian.com/automation/webhooks/jira/a/${{ secrets.JIRA_PRIVATE_ENDPOINT_ID}}")
 
           # Extract HTTP status code
