@@ -90,6 +90,19 @@ How to try it:
 4. Switch to `user-13-search-and-filter` and refresh /tasks
 5. Try searching by task title/description and filtering by priority/status
 
+## Play-18 Feature Details
+
+GitHub Issue: https://github.com/tdraper-dev/taskflow/issues/18
+
+Issue summary:
+- Title: "Implement work in Jira Ticket Play-18"
+- Status: Closed (not planned)
+- Created: August 18, 2025
+- Closed: August 19, 2025
+- Assigned to: @Copilot
+
+Note: This issue was closed without implementation as it was marked "not planned". The issue appears to reference a Jira ticket (Play-18) but no specific feature details were provided in the GitHub issue description.
+
 ## Tutorial: Running the AI workflows yourself
 
 If you want to recreate the experience with your own AI agent, follow the Bitovi guides:
